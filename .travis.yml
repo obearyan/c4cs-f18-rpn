@@ -2,4 +2,4 @@ $ cat .travis.yml
     language: python
 python: - 3.5
     script:
-      - make test 
+      - make test
