@@ -6,4 +6,4 @@ python:
 
 script: 
 
-  - python test_rpn.py
+  - make test_rpn.py
