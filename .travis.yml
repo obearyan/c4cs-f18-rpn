@@ -1,8 +1,6 @@
-$ cat .travis.yml
-language: python
-    
+language: python    
 python: 
-  - 3.5
+  - "3.5"
     
 script:
-  - make test_rpn.py
+  test_rpn.py
