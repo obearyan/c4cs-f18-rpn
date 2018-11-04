@@ -3,4 +3,4 @@ python:
   - "3.5"
     
 script:
-  python test_rpn.py
+  - python test_rpn.py
