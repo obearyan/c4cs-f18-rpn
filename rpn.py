@@ -10,6 +10,11 @@ operators = {
     '*': operator.mul,
     '/': operator.truediv,
     '^': math.pow,
+    '//': operator.floordiv,
+    '&': operator.and_,
+    '|': operator.or_,
+    '~': operator.inv,
+    '!': operator.mul,
 }
 
 def calculate(myarg):
@@ -18,12 +23,33 @@ def calculate(myarg):
         try:
             token = int(token)
             stack.append(token)
-        except ValueError:
-            function = operators[token]
-            arg2 = stack.pop()
-            arg1 = stack.pop()
-            result = function(arg1, arg2)
-            stack.append(result)
+        except ValueError: 
+            if (token == '%'):
+              arg2 = stack.pop()
+              arg1 = stack.pop()
+              arg3 = arg1 / 100
+              arg3 *= arg2
+              result = (arg1 + arg3)
+              stack.append(result)
+            elif (token == '~'):
+              function = operators[token]
+              arg2 = stack.pop()
+              result = function(arg2)
+              stack.append(result)
+            elif (token == '!'):
+              function = operators[token]
+              arg2 = stack.pop()
+              result = 1
+              while (arg2 > 1):
+                result = function(result, arg2)
+                arg2 = arg2 - 1
+              stack.append(result)
+            else:
+              function = operators[token]	  
+              arg2 = stack.pop()
+              arg1 = stack.pop()
+              result = function(arg1, arg2)
+              stack.append(result)
         print(stack)
     if len(stack) != 1:
         raise TypeError("Too many parameters")
